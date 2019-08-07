@@ -1,4 +1,5 @@
 #include <err.h>
+#include <stdio.h>
 
 #include "bcm_host.h"
 #include "interface/vcos/vcos.h"
@@ -15,8 +16,7 @@
 static void camera_control_callback(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffer)
 {
     // This is called from another thread. Don't access any data here.
-    printf( "hello picam we're in C\n" );
-    printf( MMAL_BUFFER_HEADER_T );
+    printf ( "hello picam we're in C\n" );
     if (buffer->cmd == MMAL_EVENT_ERROR)
         errx(EXIT_FAILURE, "No data received from sensor. Check all connections, including the Sunny one on the camera board");
     else if(buffer->cmd != MMAL_EVENT_PARAMETER_CHANGED)
