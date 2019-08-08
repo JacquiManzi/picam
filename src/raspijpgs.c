@@ -47,7 +47,7 @@
 #include "picam_camera.h"
 #include "picam_preview.h"
 
-#define MAX_DATA_BUFFER_SIZE        262144
+#define MAX_DATA_BUFFER_SIZE        1572864
 #define MAX_REQUEST_BUFFER_SIZE     4096
 
 #define UNUSED(expr) do { (void)(expr); } while (0)
