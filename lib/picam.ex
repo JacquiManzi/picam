@@ -339,6 +339,13 @@ defmodule Picam do
   def set_hflip(_other), do: {:error, :invalid_hflip}
 
   @doc """
+  Flip raw.
+  """
+  def set_raw(false), do: set("raw=off")
+  def set_raw(true), do: set("raw=on")
+  def set_raw(_other), do: {:error, :invalid_raw}
+
+  @doc """
   Flip the image vertically.
   """
   def set_vflip(false), do: set("vflip=off")
