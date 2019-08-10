@@ -63,6 +63,7 @@
 #define RASPIJPGS_ANNOTATION        "RASPIJPGS_ANNOTATION"
 #define RASPIJPGS_ANNO_BACKGROUND   "RASPIJPGS_ANNO_BACKGROUND"
 #define RASPIJPGS_SHARPNESS         "RASPIJPGS_SHARPNESS"
+#define RASPIJPGS_RAW               "RASPIJPGS_RAW"
 #define RASPIJPGS_CONTRAST          "RASPIJPGS_CONTRAST"
 #define RASPIJPGS_BRIGHTNESS        "RASPIJPGS_BRIGHTNESS"
 #define RASPIJPGS_SATURATION        "RASPIJPGS_SATURATION"
@@ -260,6 +261,11 @@ static void rational_param_apply(int mmal_param, const struct raspi_config_opt *
 static void sharpness_apply(const struct raspi_config_opt *opt, bool fail_on_error)
 {
     rational_param_apply(MMAL_PARAMETER_SHARPNESS, opt, fail_on_error);
+}
+
+static void raw_apply(const struct raspi_config_opt *opt, bool fail_on_error)
+{
+    rational_param_apply(MMAL_PARAMETER_ENABLE_RAW_CAPTURE, opt, fail_on_error);
 }
 
 static void contrast_apply(const struct raspi_config_opt *opt, bool fail_on_error)
@@ -597,6 +603,7 @@ static struct raspi_config_opt opts[] =
     {"annotation",  "a",    RASPIJPGS_ANNOTATION,   "Annotate the video frames with this text",             "",         default_set, annotation_apply},
     {"anno_background", "ab", RASPIJPGS_ANNO_BACKGROUND, "Turn on a black background behind the annotation", "off",     default_set, anno_background_apply},
     {"sharpness",   "sh",   RASPIJPGS_SHARPNESS,    "Set image sharpness (-100 to 100)",                    "0",        default_set, sharpness_apply},
+    {"raw",         "raw",  RASPIJPGS_RAW,          "Set Raw",                                              "on",      default_set, raw_apply},
     {"contrast",    "co",   RASPIJPGS_CONTRAST,     "Set image contrast (-100 to 100)",                     "0",        default_set, contrast_apply},
     {"brightness",  "br",   RASPIJPGS_BRIGHTNESS,   "Set image brightness (0 to 100)",                      "50",       default_set, brightness_apply},
     {"saturation",  "sa",   RASPIJPGS_SATURATION,   "Set image saturation (-100 to 100)",                   "0",        default_set, saturation_apply},
