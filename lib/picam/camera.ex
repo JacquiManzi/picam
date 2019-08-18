@@ -43,6 +43,8 @@ defmodule Picam.Camera do
   end
 
   def handle_info({_, {:data, jpg}}, state) do
+    IO.inspect "got data"
+    IO.inspect jpg
     Task.start(fn -> dispatch(state.requests, jpg) end)
     {:noreply, %{state | requests: [], offline: false}}
   end
