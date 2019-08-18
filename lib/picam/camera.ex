@@ -33,6 +33,7 @@ defmodule Picam.Camera do
   end
 
   def handle_call(:next_frame, from, state) do
+    Logger.info("got next frame")
     state = %{state | requests: [from | state.requests]}
     {:noreply, state}
   end
